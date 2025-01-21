@@ -1,0 +1,11 @@
+.card {
+    border: 1px solid burlywood;
+    border-radius: 5px;
+    padding: 10px 50px;
+    margin: 10px;
+}
+
+.list {
+    text-decoration: none;
+    list-style: none;
+}
