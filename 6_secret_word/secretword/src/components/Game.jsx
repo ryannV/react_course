@@ -1,37 +1,80 @@
-import './Game.css';
+import { useState, useRef } from "react";
+import "./Game.css";
 
-const Game = ({verifyLetter}) => {
-    return(
-        <div className="game">
-            <p className="points">
-                <span>Pontuação: 000</span>
-            </p>
+const Game = ({
+  verifyLetter,
+  pickedWord,
+  pickedCategory,
+  letters,
+  guessedLetters,
+  wrongLetters,
+  guesses,
+  score,
+}) => {
 
-            <h1>Advinhe a palavra:</h1>
-            <h3 className="tip">Dica sobre a palavra: <span>Dica ...</span></h3>
-            <p>Você ainda tem XXX tentativa(s).</p>
+  const [letter, setLetter] =  useState("");  
+  const letterInputRef = useRef(null);
 
-            <div className="wordContainer">
-                <span className="letter">A</span>
-                <span className="blankSquare"></span>
-            </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-            <div className="letterContainer">
-                <p>Tente advinhar uma letra da palavra:</p>
+    verifyLetter(letter);
 
-                <form>
-                    <input type="text" name="letter" maxLength="1" required/>
-                    <button>Jogar!</button>
-                </form>
-            </div>
+    // Limpa o Input
+    setLetter("");
 
-            <div className="wrongLettersContainer">
-                <p>Letras já utilizadas</p>
-                <span>a, </span>
-                <span>b, </span>
-            </div>
-        </div>
-    )
-}
+    // Foca no Input após submit 
+    letterInputRef.current.focus();
+  }
+
+  return (
+    <div className="game">
+      <p className="points">
+        <span>Pontuação: {score}</span>
+      </p>
+
+      <h1>Advinhe a palavra:</h1>
+      <h3 className="tip">
+        Dica sobre a palavra: <span>{pickedCategory}</span>
+      </h3>
+      <p>Você ainda tem {guesses} tentativa(s).</p>
+
+      {/* Map na palavra, inclui a letra caso ela ja tenha sido adivinhada, ou coloca o espaço em branco */}
+      <div className="wordContainer">
+        {letters.map((letter, i) =>
+          guessedLetters.includes(letter) ? (
+            <span key={i} className="letter">{letter}</span>
+          ) : (
+            <span key={i} className="blankSquare"></span>
+          ))
+        }
+      </div>
+
+      <div className="letterContainer">
+        <p>Tente advinhar uma letra da palavra:</p>
+
+        <form onSubmit={handleSubmit}>
+          <input 
+            type="text" 
+            name="letter" 
+            maxLength="1" 
+            required 
+            onChange={(e) => setLetter(e.target.value)} 
+            value={letter}
+            ref={letterInputRef}
+          />
+          <button>Jogar!</button>
+        </form>
+      </div>
+
+      <div className="wrongLettersContainer">
+        <p>Letras já utilizadas</p>
+        {wrongLetters.map((letter, i) => (
+            <span key={i}>{letter}, </span>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default Game;
