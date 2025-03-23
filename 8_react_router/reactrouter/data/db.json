@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Camisa",
+      "price": 59.9
+    },
+    {
+      "id": "2",
+      "name": "Calça vermelha",
+      "price": 90
+    },
+    {
+      "id": "4",
+      "name": "Chuteira",
+      "price": "150"
+    },
+    {
+      "id": "c1ca",
+      "name": "Bola",
+      "price": "25"
+    },
+    {
+      "id": "d3fd",
+      "name": "Sorvete",
+      "price": "84"
+    },
+    {
+      "id": "7f2d",
+      "name": "Mouse",
+      "price": "60"
+    },
+    {
+      "id": "99b6",
+      "name": "Teclado",
+      "price": "51"
+    },
+    {
+      "id": "7883",
+      "name": "Camiseta",
+      "price": "45"
+    },
+    {
+      "id": "0ec8",
+      "name": "Garrafa",
+      "price": "42"
+    },
+    {
+      "id": "e3df",
+      "name": "Jaqueta",
+      "price": "149"
+    }
+  ]
+}
