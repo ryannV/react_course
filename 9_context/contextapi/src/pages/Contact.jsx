@@ -1,8 +1,13 @@
-import React from 'react'
+import { useCounterContext } from "../hooks/useCounterContext"
 
 const Contact = () => {
+  const {counter} = useCounterContext();
+
   return (
-    <div>Contact</div>
+    <div>
+      <h1>Contact</h1>
+      <p>{counter}</p>
+    </div>
   )
 }
 
